@@ -5,27 +5,24 @@ dotenv.config();
 
 async function init() {
   const queue = 'tasks';
+
+  console.log('Connect to Rabbitmq server...🚀');
   const connection = await amqplib.connect(
     `amqp://${process.env.RABBITMQ_ADMIN_ID}:${process.env.RABBITMQ_ADMIN_PASSWORD}@localhost:5672`,
   );
+  console.log('Connection successful...🚀');
 
-  const ch1 = await connection.createChannel();
-  await ch1.assertQueue(queue);
+  const recieverChannel = await connection.createChannel();
+  await recieverChannel.assertQueue(queue);
 
-  ch1.consume(queue, (msg) => {
+  recieverChannel.consume(queue, (msg) => {
     if (msg !== null) {
       console.log('Received: ', msg.content.toString());
-      ch1.ack(msg);
+      recieverChannel.ack(msg);
     } else {
       console.log('Consumer cancelled by server');
     }
   });
-
-  const ch2 = await connection.createChannel();
-
-  setInterval(() => {
-    ch2.sendToQueue(queue, Buffer.from('test message!!'));
-  }, 1000);
 }
 
 init();

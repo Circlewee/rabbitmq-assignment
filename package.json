@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./src/index.ts"
+    "start-sender": "ts-node ./src/sender/index.ts",
+    "start-reciever": "ts-node ./src/reciever/index.ts"
   },
   "keywords": [],
   "author": "Circlewee",
