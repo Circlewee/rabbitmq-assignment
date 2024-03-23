@@ -1,0 +1,22 @@
+{
+  "name": "rabbitmq-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "Circlewee",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/node": "^20.11.30",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3"
+  }
+}
