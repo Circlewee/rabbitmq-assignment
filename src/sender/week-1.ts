@@ -3,17 +3,16 @@ import dotenv = require('dotenv');
 
 dotenv.config();
 
-async function init() {
+async function initSender() {
   console.log('Connect to Rabbitmq server...🚀');
   const connection = await amqplib.connect(
-    `amqp://${process.env.RABBITMQ_ADMIN_ID}:${process.env.RABBITMQ_ADMIN_PASSWORD}@localhost:5672`,
+    `amqp://${process.env.RABBITMQ_ADMIN_ID}:${process.env.RABBITMQ_ADMIN_PASSWORD}@localhost:${process.env.RABBITMQ_PORT}/${process.env.RABBITMQ_VHOST}`
   );
   console.log('Connection successful...🚀');
 
   const senderChannel = await connection.createChannel();
-
   const keys = [
-    'command.root.test',
+    'command.root',
     'chat.user.test',
     'chat.test.unknown',
     'chat.room.room',
@@ -21,14 +20,14 @@ async function init() {
     'command.room.user',
     'chat.room.user',
   ];
-
-  const rootExchangeKey = 'request';
+  let index = 0;
 
   for (const key of keys) {
-    console.log('Send to ', key);
-    const msg = `Message to: ${key}`;
+    console.log(`Send to ${key}...🚀`);
+    const msg = `Hello ${key} ${index + 1}`;
 
-    senderChannel.publish(rootExchangeKey, key, Buffer.from(msg));
+    senderChannel.publish('request', key, Buffer.from(msg));
+    index++;
   }
 
   setTimeout(() => {
@@ -37,4 +36,4 @@ async function init() {
   }, 500);
 }
 
-init();
+initSender();
