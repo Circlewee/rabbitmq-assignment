@@ -5,20 +5,24 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-config": "ts-node ./src/config/week-1.ts",
-    "start-sender": "ts-node ./src/sender/week-1.ts",
-    "start-receiver": "ts-node ./src/receiver/week-1.ts"
+    "start-config": "ts-node ./src/config/week-2.ts",
+    "start-sender": "ts-node ./src/sender/week-2.ts",
+    "start-receiver": "ts-node ./src/receiver/week-2.ts",
+    "start-auth": "nodemon --watch ./src/auth/*.ts --exec ts-node ./src/auth/index.ts"
   },
   "keywords": [],
   "author": "Circlewee",
   "license": "ISC",
   "devDependencies": {
     "@types/amqplib": "^0.10.5",
+    "@types/express": "^4.17.21",
     "@types/node": "^20.11.30",
     "dotenv": "^16.4.5",
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "amqplib": "^0.10.3"
+    "amqplib": "^0.10.3",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
   }
 }
