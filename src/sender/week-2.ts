@@ -17,16 +17,18 @@ async function initSender() {
   console.log('Connection successful...🚀');
 
   const senderChannel = await connection.createChannel();
-  const keys = ['chat.user.user', 'chat.user.user123', 'chat.user.123', 'chat.user.admin'];
-  const keys2 = ['chat.user.user123'];
-  let index = 0;
+  const keys = [
+    { routingKey: 'chat.user.user123', username: 'user123' },
+    { routingKey: 'chat.user.useruseruser', username: 'useruseruser' },
+    { routingKey: 'chat.user.awesomeuser', username: 'awesomeuser' },
+    { routingKey: 'chat.user.user_mom', username: 'user_mom' },
+  ];
 
-  for (const key of keys2) {
-    console.log(`Send to ${key}...🚀`);
-    const msg = `Hello ${key} ${index + 1}. I'm ${SENDER_ID}`;
+  for (const key of keys) {
+    console.log(`Send to ${key.username}...🚀`);
+    const msg = `Hello ${key.username}. I'm ${SENDER_ID}.`;
 
-    senderChannel.publish('request', key, Buffer.from(msg));
-    index++;
+    senderChannel.publish('request', key.routingKey, Buffer.from(msg));
   }
 
   setTimeout(() => {

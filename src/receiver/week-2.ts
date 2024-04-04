@@ -22,15 +22,17 @@ async function initReciever() {
   console.log(`Create ${queueName} queue...🚀`);
   const userQueue = await receiverChannel.assertQueue(queueName, { autoDelete: true });
   console.log(`Bind ${queueName} queue...🚀`);
-  await receiverChannel.bindQueue(userQueue.queue, 'user', `*.${RECEIVER_ID}`);
+  await receiverChannel.bindQueue(userQueue.queue, 'user', `*.${queueName}`);
 
   console.log(`Receive start...🚀`);
-  receiverChannel.consume(queueName, (msg) => {
+  receiverChannel.consume(queueName, async (msg) => {
     if (msg !== null) {
       console.log(`${queueName} queue receive message: ${msg.content.toString()}`);
       receiverChannel.ack(msg);
     } else {
       console.log('Consumer cancelled by server');
+      await connection.close();
+      process.exit(0);
     }
   });
 }
