@@ -17,16 +17,16 @@ RABBITMQ_VHOST = your_rabbitmq_vhost
 ```
 
 ### 설명
-#### auth/week-3.ts
+#### [auth/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/auth/week-3.ts)
 dead letter queue 구성을 위한 권한을 추가해주었습니다.
 
-#### sender/week-3.ts
+#### [sender/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/sender/week-3.ts)
 `Math.random() * 10`으로 0 - 9 사이의 난수를 생성하여 총 10번 publish합니다.
 
-#### receiver/week-3.ts
+#### [receiver/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/receiver/week-3.ts)
 앞서 consume하는 코드는 동일하나 난수가 5미만이라면 nack 처리하여 dead letter queue로 메시지를 보냅니다.
 
-#### receiver/week-3-dead.ts
+#### [receiver/week-3-dead.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/receiver/week-3-dead.ts)
 nack처리 되어 dead letter queue로 온 message를 consume합니다.
 
 
