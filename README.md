@@ -3,7 +3,7 @@
 각 주차별 과제가 브랜치에 작성되어 있습니다.
 ex) 1주차 과제 => week-1
 
-현재 과제 주차: **week-3**
+현재 과제 주차: **week-4**
 
 ### before start
 
@@ -17,18 +17,16 @@ RABBITMQ_VHOST = your_rabbitmq_vhost
 ```
 
 ### 설명
-#### [auth/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/auth/week-3.ts)
-dead letter queue 구성을 위한 권한을 추가해주었습니다.
+#### [auth/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/auth/week-4.ts)
+`user.{userId}` queue 구성을 위한 권한을 추가해주었습니다.
 
-#### [sender/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/sender/week-3.ts)
-`Math.random() * 10`으로 0 - 9 사이의 난수를 생성하여 총 10번 publish합니다.
+#### [sender/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/sender/week-4.ts)
+**Client**
+5명의 user가 로그인 하는 것을 가정해 user.user1 ~ user.user5 exchange를 생성하여 미리 바인딩 해두고 커맨드를 처리합니다.
 
-#### [receiver/week-3.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/receiver/week-3.ts)
-앞서 consume하는 코드는 동일하나 난수가 5미만이라면 nack 처리하여 dead letter queue로 메시지를 보냅니다.
-
-#### [receiver/week-3-dead.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-3/src/receiver/week-3-dead.ts)
-nack처리 되어 dead letter queue로 온 message를 consume합니다.
-
+#### [receiver/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/receiver/week-4.ts)
+**Server**
+수신한 명령어 메시지에 따라 `room.{roomName}` exchange를 생성하거나 user queue를 room exchange에 바인딩합니다.
 
 ### start
 
@@ -39,12 +37,9 @@ npm run start-config
 # http auth backend 서버 실행
 npm run start-auth
 
-# message publish 코드 실행
+# command 입력 코드 실행 (client)
 npm run start-sender
 
-# message consume 코드 실행
+# command 처리 코드 실행 (server)
 npm run start-receiver
-
-# dead letter queue에 쌓인 메시지를 consume
-npm run start-dead-letter-receiver
 ```
