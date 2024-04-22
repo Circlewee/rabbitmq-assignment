@@ -17,14 +17,18 @@ RABBITMQ_VHOST = your_rabbitmq_vhost
 ```
 
 ### 설명
+
 #### [auth/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/auth/week-4.ts)
+
 `user.{userId}` queue 구성을 위한 권한을 추가해주었습니다.
 
-#### [sender/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/sender/week-4.ts)
+#### [client/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/client/week-4.ts)
+
 **Client**
 5명의 user가 로그인 하는 것을 가정해 user.user1 ~ user.user5 exchange를 생성하여 미리 바인딩 해두고 커맨드를 처리합니다.
 
-#### [receiver/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/receiver/week-4.ts)
+#### [server/week-4.ts](https://github.com/Circlewee/rabbitmq-assignment/blob/week-4/src/server/week-4.ts)
+
 **Server**
 수신한 명령어 메시지에 따라 `room.{roomName}` exchange를 생성하거나 user queue를 room exchange에 바인딩합니다.
 

@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-config": "ts-node ./src/config/week-4.ts",
-    "start-sender": "ts-node ./src/sender/week-4.ts",
-    "start-receiver": "ts-node ./src/receiver/week-4.ts",
-    "start-dead-letter-receiver": "ts-node ./src/receiver/week-3-dead.ts",
+    "start-client": "ts-node ./src/client/week-4.ts",
+    "start-server": "ts-node ./src/server/week-4.ts",
     "start-auth": "nodemon --watch ./src/auth/*.ts --exec ts-node ./src/auth/week-4.ts"
   },
   "keywords": [],
