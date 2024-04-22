@@ -5,11 +5,11 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-config": "ts-node ./src/config/week-3.ts",
-    "start-sender": "ts-node ./src/sender/week-3.ts",
-    "start-receiver": "ts-node ./src/receiver/week-3.ts",
+    "start-config": "ts-node ./src/config/week-4.ts",
+    "start-sender": "ts-node ./src/sender/week-4.ts",
+    "start-receiver": "ts-node ./src/receiver/week-4.ts",
     "start-dead-letter-receiver": "ts-node ./src/receiver/week-3-dead.ts",
-    "start-auth": "nodemon --watch ./src/auth/*.ts --exec ts-node ./src/auth/week-3.ts"
+    "start-auth": "nodemon --watch ./src/auth/*.ts --exec ts-node ./src/auth/week-4.ts"
   },
   "keywords": [],
   "author": "Circlewee",

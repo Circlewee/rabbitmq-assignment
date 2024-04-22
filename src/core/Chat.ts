@@ -7,12 +7,12 @@ export class Chat {
     this._contentType = contentType;
   }
 
-  composition(body: string | number, userName: string): string {
+  composition(data: { [key: string]: any }): any {
     if (this._contentType === 'application/json') {
-      return JSON.stringify({ body: body, userName: userName });
+      return JSON.stringify({ data: data });
     }
 
-    return `${userName}: ${body}`;
+    return data;
   }
 
   decomposition(msg: string) {
